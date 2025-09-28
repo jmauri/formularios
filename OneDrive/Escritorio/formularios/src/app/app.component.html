@@ -1,0 +1,39 @@
+<form [formGroup]="registroForm" (ngSubmit)="onSubmit()" class="formulario">
+  <div class="campo" [class.error]="f.nombre.touched && f.nombre.invalid">
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" type="text" formControlName="nombre" placeholder="Ingresa tu nombre" />
+    <div *ngIf="f.nombre.touched && f.nombre.invalid">
+      <small *ngIf="f.nombre.hasError('required')">El nombre es requerido.</small>
+      <small *ngIf="f.nombre.hasError('minlength')">Mínimo 2 caracteres.</small>
+    </div>
+  </div>
+
+  <div class="campo" [class.error]="f.apellido.touched && f.apellido.invalid">
+    <label for="apellido">Apellido:</label>
+    <input id="apellido" type="text" formControlName="apellido" placeholder="Ingresa tus apellidos" />
+    <div *ngIf="f.apellido.touched && f.apellido.invalid">
+      <small *ngIf="f.apellido.hasError('required')">El apellido es requerido.</small>
+      <small *ngIf="f.apellido.hasError('minlength')">Mínimo 2 caracteres.</small>
+    </div>
+  </div>
+
+  <div class="campo" [class.error]="f.email.touched && f.email.invalid">
+    <label for="email">Email:</label>
+    <input id="email" type="email" formControlName="email" placeholder="tucorreo@correo.com" />
+    <div *ngIf="f.email.touched && f.email.invalid">
+      <small *ngIf="f.email.hasError('required')">El email es requerido.</small>
+      <small *ngIf="f.email.hasError('email')">Ingresa un correo válido.</small>
+    </div>
+  </div>
+
+  <div class="campo" [class.error]="f.contrasena.touched && f.contrasena.invalid">
+    <label for="contrasena">Contraseña:</label>
+    <input id="contrasena" type="password" formControlName="contrasena" placeholder="Mínimo 6 caracteres" />
+    <div *ngIf="f.contrasena.touched && f.contrasena.invalid">
+      <small *ngIf="f.contrasena.hasError('required')">La contraseña es requerida.</small>
+      <small *ngIf="f.contrasena.hasError('minlength')">Mínimo 6 caracteres.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="registroForm.invalid">Registrarse</button>
+</form>
